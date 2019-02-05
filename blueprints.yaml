@@ -53,3 +53,4 @@ form:
         create: true
       validate:
         type: commalist
+        required: true
