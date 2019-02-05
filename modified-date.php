@@ -50,7 +50,8 @@ class ModifiedDatePlugin extends Plugin
     {
         // Only do something if the page type is in our list of allowed types
         // TO-DO: make the config page load page types dynamically from the theme
-        $pageType = $this->grav['page']->template();
+        $template = $this->grav['page']->template();
+        $pageType = ucfirst($template);
         $allowedPageTypes = $this->config->get('plugins.modified-date.page_types', []);
         if (in_array($pageType, $allowedPageTypes)) {
 

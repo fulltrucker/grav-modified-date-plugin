@@ -15,6 +15,7 @@ license: MIT
 form:
   validation: strict
   fields:
+  
     enabled:
       type: toggle
       label: PLUGIN_ADMIN.PLUGIN_STATUS
@@ -25,11 +26,13 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+        
     pretext:
       type: text
       label: PLUGIN_MODIFIED_DATE.PRE_TEXT
       help: PLUGIN_MODIFIED_DATE.PRE_TEXT_HELP
       default: 'Updated:'
+      
     placement:
       type: select
       label: PLUGIN_MODIFIED_DATE.PLACEMENT
@@ -39,16 +42,15 @@ form:
       options:
         'top': 'top'
         'bottom': 'bottom'
+        
     page_types:
       type: select
       multiple: true
       label: PLUGIN_MODIFIED_DATE.PAGE_TYPE
       classes: fancy
-      options:
-        'default': 'default'
-        'docs': 'docs'
-        'chapter': 'chapter'
+      data-options@: '\Grav\Common\Page\Pages::pageTypes'
       selectize:
         create: true
       validate:
         type: commalist
+        required: true
