@@ -58,9 +58,11 @@ This plugin requires Twig processing to operate, so you'll need to enable that i
     twig: true
 ```
 
-
+Right now the page types are hard-coded to the templates in the Learn2 theme. Ideally, the list of page types would be generated dynamically from the theme. But for now, select which of the three types of pages you want the modified date to appear on using the options detailed in the Configuration section.
 
 ## To Do
 
-Right now the page types are hard-coded to the templates in the Learn2 theme. Ideally, the list of page types would be generated dynamically from the theme.
+- Generate page types / templates dynamically from the theme.
+- Move the page type check login from `onPageContentRaw()` to `onPluginsInitialized()` so it just doesn't even fire if we're not on the right page. Maybe even replace the `isAdmin()` check.
+- Figure out how to use a `template` file to append/prepend to the page content, rather than munging the entire content. This would seem cleaner.
 
