@@ -4,19 +4,21 @@ The **Modified Date** Plugin is for [Grav CMS](http://github.com/getgrav/grav). 
 
 ## Installation
 
-Installing the Modified Date plugin can be done in one of two ways. The GPM (Grav Package Manager) installation method enables you to quickly and easily install the plugin with a simple terminal command, while the manual method enables you to do so via a zip file.
+Installing the Modified Date plugin can be done in one of two ways, either on the command line from [GitHub](https://github.com/fulltrucker/modified-date) or manually by downloading the .zip version of the plugin.
 
 ### Git Installation (Preferred)
 
-The simplest way to install this plugin is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's terminal (also called the command line).  From the root of your Grav install type:
+The simplest way to install this plugin is via Git on the command line.  In the `/user/plugins` directory your Grav install type:
 
-    bin/gpm install modified-date
+```shell
+$ git clone https://github.com/fulltrucker/modified-date.git
+```
 
-This will install the Modified Date plugin into your `/user/plugins` directory within Grav. Its files can be found under `/your/site/grav/user/plugins/modified-date`.
+This will clone the Modified Date plugin into your `/user/plugins` directory within Grav. Its files can be found under `/your/site/grav/user/plugins/modified-date`.
 
 ### Manual Installation
 
-To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `modified-date`. You can find these files on [GitHub](https://github.com/fulltrucker/grav-plugin-modified-date).
+To install this plugin, just download the zip version of this repository and unzip it under `/your/site/grav/user/plugins`. Then, rename the folder to `modified-date`. You can find these files on [GitHub](https://github.com/fulltrucker/modified-date).
 
 You should now have all the plugin files under
 
@@ -32,19 +34,33 @@ Here is the default configuration and an explanation of available options:
 
 ```yaml
 enabled: true
+pretext: The text that is displayed before the last modified date. Simple text field, can accept Twig and Markdown.
+placement: Whether you want to display the modified date at the top or the bottom of the content
+  options:
+    - top
+    - bottom
+page_types: The page templates (types) on which to display the modified date
+  options:
+    - default
+    - docs
+    - chapter
 ```
 
 Note that if you use the admin plugin, a file with your configuration, and named modified-date.yaml will be saved in the `user/config/plugins/` folder once the configuration is saved in the admin.
 
 ## Usage
 
-**Describe how to use the plugin.**
+This plugin requires Twig processing to operate, so you'll need to enable that in `user/config/system.yaml` for the plugin to work. Like so:
 
-## Credits
+```yaml
+  events:
+    page: true
+    twig: true
+```
 
-**Did you incorporate third-party code? Want to thank somebody?**
+
 
 ## To Do
 
-- [ ] Future plans, if any
+Right now the page types are hard-coded to the templates in the Learn2 theme. Ideally, the list of page types would be generated dynamically from the theme.
 
